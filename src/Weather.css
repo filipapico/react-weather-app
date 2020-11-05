@@ -1,18 +1,40 @@
 .Weather {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 15px;
   border: 1px solid lightslategray;
   border-radius: 8px;
 }
 
-.Weather form {
+.Weather h1 {
 }
 
 .Weather ul {
   padding: 0;
+  margin-top: 10px;
   text-align: left;
 }
 
 .Weather li {
   list-style: none;
   color: green;
+}
+
+.Weather li strong {
+  font-size: 18px;
+}
+
+.Weather img {
+  position: relative;
+  bottom: 20px;
+  margin-right: 10px;
+}
+
+.Weather .temperature {
+  font-size: 64px;
+}
+
+.Weather .unit {
+  font-size: 16px;
+  position: relative;
+  bottom: 32px;
 }
