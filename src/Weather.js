@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios"
-import "./Weather.css"
+import axios from "axios";
+import UpdatedDate from "./UpdatedDate"
+
+import "./Weather.css";
 
 export default function Weather() {
   let [city, setCity] = useState(null)
+  let [date, setDate] = useState(null)
   let [temperature, setTemperature] = useState(null)
   let [description, setDescription] = useState(null)
   let [humidity, setHumidity] = useState(null)
@@ -15,12 +18,12 @@ export default function Weather() {
   }
 
   function displayWeather(response) {
-    console.log(response.data.main)
     setTemperature(Math.round(response.data.main.temp))
     setDescription(response.data.weather[0].description)
     setHumidity(response.data.main.humidity)
     setWindSpeed(Math.round(response.data.wind.speed))
-    }
+    setDate(response.data.dt * 1000)
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -36,8 +39,7 @@ export default function Weather() {
        <div className="col-6">
          <h1 className="text-capitalize"><strong>{city}</strong></h1>
          <ul>
-           <li>Thursday, 12:50</li>
-           <li>5, November</li>
+           <UpdatedDate newDate={date} />
          </ul>
        </div>
        <div className="col-6">
