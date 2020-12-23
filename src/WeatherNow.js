@@ -11,7 +11,7 @@ export default function WeatherNow(props) {
         </div>
         <div className="row">
           <div className="col-6">
-            <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="partly cloudy"/>
+            <img src={props.data.icon} alt={props.data.description}/>
             <span className="temperature">{props.data.temperature}</span>
             <span className="unit">ºC | ºF</span>
           </div>
