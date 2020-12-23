@@ -3,6 +3,7 @@
   padding: 15px;
   border: 1px solid lightslategray;
   border-radius: 8px;
+  background-color: lightgray;
 }
 
 .Weather h1 {
