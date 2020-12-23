@@ -45,7 +45,9 @@ export default function UpdatedDate(props) {
 
   return (
   <div>
-    <p>{dayOfWeek}, {hours}:{minutes}</p>
-    <p>{dayOfMonth}, {month}</p>
+    <ul>
+      <li>{dayOfWeek}, {hours}:{minutes}</li>
+      <li>{dayOfMonth}, {month}</li>
+    </ul>
   </div>)
 }

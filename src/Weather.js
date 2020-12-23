@@ -52,7 +52,7 @@ export default function Weather(props) {
             </form>
           </div>  
         </div>
-        <div className="row">
+        <div className="row" ClassName="date-time">
           <ul>
             <UpdatedDate newDate={date} />
           </ul>

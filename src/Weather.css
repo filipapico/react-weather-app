@@ -7,10 +7,11 @@
 }
 
 .Weather h1 {
+  font-size: 50px;
 }
 
 .Weather ul {
-  padding: 0;
+  padding: 15px;
   margin-top: 10px;
   text-align: left;
 }
