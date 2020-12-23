@@ -1,5 +1,6 @@
 import React from "react";
 import UpdatedDate from "./UpdatedDate"
+import WeatherTemperature from "./WeatherTemperature"
 
 export default function WeatherNow(props) {
     return (
@@ -12,8 +13,7 @@ export default function WeatherNow(props) {
         <div className="row">
           <div className="col-6">
             <img src={props.data.icon} alt={props.data.description}/>
-            <span className="temperature">{props.data.temperature}</span>
-            <span className="unit">ºC | ºF</span>
+            <WeatherTemperature temperature={props.data.temperature}/>
           </div>
           <div className="col-6">
             <ul>
