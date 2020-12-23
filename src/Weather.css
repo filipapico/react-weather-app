@@ -8,10 +8,11 @@
 
 .Weather h1 {
   font-size: 50px;
+  padding-bottom: 0;
 }
 
 .Weather ul {
-  padding: 15px;
+  padding: 0 0 0 15px;
   margin-top: 10px;
   text-align: left;
 }

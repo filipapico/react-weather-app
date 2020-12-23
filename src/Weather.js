@@ -1,44 +1,46 @@
 import React, { useState } from "react";
 import axios from "axios";
-import UpdatedDate from "./UpdatedDate"
 import "./Weather.css";
+// import WeatherNow from "./WeatherNow";
+
+// Mudar para WeatherNow
+import UpdatedDate from "./UpdatedDate"
 
 export default function Weather(props) {
-  let [ready, setReady] = useState(false)
-  let [city, setCity] = useState(props.defaultCity)
-  let [date, setDate] = useState(null)
-  let [temperature, setTemperature] = useState(null)
-  let [description, setDescription] = useState(null)
-  let [humidity, setHumidity] = useState(null)
-  let [windSpeed, setWindSpeed] = useState(null)
+  let [weatherData, setWeatherData] = useState({ ready: false });
+  let [city, setCity] = useState(props.defaultCity);
   
   function displayWeather(response) {
-    setReady(true);
-    setTemperature(Math.round(response.data.main.temp))
-    setDescription(response.data.weather[0].description)
-    setHumidity(response.data.main.humidity)
-    setWindSpeed(Math.round(response.data.wind.speed))
-    setDate(response.data.dt * 1000)
-    setCity(response.data.name)
+    setWeatherData({
+      ready: true,
+      // city: response.data.name,
+      // date: response.data.dt * 1000,
+      temperature: Math.round(response.data.main.temp),
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      windSpeed: Math.round(response.data.wind.speed),
+      icon: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+    })
   }
 
   function updateCity(event) {
-    setCity(event.target.value)
+    setCity(event.target.value);
   }
 
   function handleSubmit(event) {
-    let apiKey = "f2741c2d8db0d12b06b1e9b5fcfef6a1"
+    let apiKey = "3357bf36b64fb2b6b88c4092929f0cdf"
+    // "95b79d65e0e57550f167b80420d22ce8" nova mail LULU
     let units = "metric"
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`
     axios.get(apiUrl).then(displayWeather)  
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return(
       <div className="Weather">
         <div className="row">
           <div className="col-6">
-            <h1 className="text-capitalize"><strong>{city}</strong></h1>
+            <h1 className="text-capitalize"><strong>{weatherData.city}</strong></h1>
           </div>
           <div className="col-6">
             <form onSubmit={handleSubmit} className="form-inline" >
@@ -52,26 +54,30 @@ export default function Weather(props) {
             </form>
           </div>  
         </div>
+        {/* <WeatherNow /> */}
+        <div className="WeatherNow">
         <div className="row" ClassName="date-time">
           <ul>
-            <UpdatedDate newDate={date} />
+            <p>"Date"</p>
+            {/* <UpdatedDate newDate={weatherData.date} /> */}
           </ul>
         </div>
         <div className="row">
-        <div className="col-6">
-          <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="partly cloudy"/>
-          <span className="temperature">{temperature}</span>
-           <span className="unit">ºC | ºF</span>
+          <div className="col-6">
+            <img src={weatherData.icon} alt={weatherData.description}/>
+            <span className="temperature">{weatherData.temperature}</span>
+            <span className="unit">ºC | ºF</span>
+          </div>
+          <div className="col-6">
+            <ul>
+              <li><strong className="text-capitalize">{weatherData.description}</strong></li>  
+              <li>Humidity: {weatherData.humidity}%</li>  
+              <li>Wind speed: {weatherData.windSpeed} km/h</li>  
+            </ul>          
+          </div>
         </div>
-        <div className="col-6">
-          <ul>
-           <li><strong className="text-capitalize">{description}</strong></li>  
-           <li>Humidity: {humidity}%</li>  
-           <li>Wind speed: {windSpeed} km/h</li>  
-           </ul>          
-         </div>
-        </div>
-      </div>
+      </div>  
+       </div>
     );
   } else {
     handleSubmit();
