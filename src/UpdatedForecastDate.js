@@ -12,6 +12,18 @@ export default function UpdatedForecastDate(props) {
     "Saturday",
   ];
   let dayOfWeek = days[date.getDay()];
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    if (minutes === 0) {
+      minutes = `00`;
+    } else {
+      minutes = `0${minutes}`;
+    }
+  }
 
   let months = [
     "January",
@@ -33,7 +45,8 @@ export default function UpdatedForecastDate(props) {
   return (
   <div>
     <ul>
-      <li>{dayOfMonth} {month} </li>
+      <li>{dayOfWeek}, {hours}:{minutes}</li>
+      <li>{dayOfMonth}, {month}</li>
     </ul>
   </div>)
 }

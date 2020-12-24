@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
-import WeatherForecastDaily from "./WeatherForecastDaily";
+import UpdatedForecastDate from "./UpdatedForecastDate";
 
 import "./WeatherForecast.css";
 
 export default function WeatherForecast(props) {
-  let [loaded, setLoaded] = useState(false)
-  let [forecast, setForecast] = useState(null);
+  let [forecast, setForecast] = useState({ ready: false });
 
   function displayWeatherForecast(response) {
     setForecast({
-      date: response.data.daily[0].dt*1000,
+      ready: true,
+      // date: response.data.daily[0].dt * 1000,
       icon: `http://openweathermap.org/img/wn/${response.data.daily[0].weather[0].icon}@2x.png`,
       minimumTemperature: response.data.daily[0].temp.min,
       maximumTemperature: response.data.daily[0].temp.max,
-      latitude: response.data.lat,
     })
-    setLoaded(true);
   }
 
-  if (loaded && forecast.latitude === props.latitude) {  
+  if (forecast.ready && forecast.latitude === props.latitude) {  
     return (
       <div className="WeatherForecast">
-        <WeatherForecastDaily data={forecast}/>
+        <p>BLEACH</p>
+        {/* <ul> */}
+          {/* <li><UpdatedForecastDate newDate={forecast.date} /></li> */}
+          {/* <li><img src={forecast.icon} /></li>
+          <li className="maximum">Max:{forecast.maximumTemperature}</li>
+          <li className="minimum">Min:{forecast.minimumTemperature}</li> */}
+        {/* </ul> */}
       </div>
     )
   } else {
-    let apiKey = "95b79d65e0e57550f167b80420d22ce8";
+    let apiKey = "f2741c2d8db0d12b06b1e9b5fcfef6a1";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.latitude}&lon=${props.longitude}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(displayWeatherForecast);
+    console.log(apiUrl)
     return "Loading..."
   }
 }
