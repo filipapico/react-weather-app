@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Weather.css";
 import WeatherNow from "./WeatherNow";
+import WeatherForecast from "./WeatherForecast"
+
+import "./Weather.css";
 
 export default function Weather(props) {
   let [weatherData, setWeatherData] = useState({ ready: false });
@@ -11,6 +13,8 @@ export default function Weather(props) {
     setWeatherData({
       ready: true,
       city: response.data.name,
+      latitude: response.data.coord.lat,
+      longitude: response.data.coord.lon,
       date: response.data.dt * 1000,
       temperature: Math.round(response.data.main.temp),
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
@@ -24,15 +28,15 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
-function apiGet(params) {
-  let apiKey = "95b79d65e0e57550f167b80420d22ce8";
+  function apiGet() {
+    let apiKey = "f2741c2d8db0d12b06b1e9b5fcfef6a1";
     console.log(city)
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(displayWeather);
-    // "95b79d65e0e57550f167b80420d22ce8" nova mail LULU
-    // let apiKey = "3357bf36b64fb2b6b88c4092929f0cdf" API FP bloqueado
-}
+    // "95b79d65e0e57550f167b80420d22ce8" API LULU
+    // "3357bf36b64fb2b6b88c4092929f0cdf" API FP
+  }
 
   function handleSubmit(event) {    
     event.preventDefault();
@@ -44,7 +48,7 @@ function apiGet(params) {
       <div className="Weather">
         <div className="row">
           <div className="col-6">
-            <h1 className="text-capitalize"><strong>{city}</strong></h1>
+            <h1 className="text-capitalize"><strong>{weatherData.city}</strong></h1>
           </div>
           <div className="col-6">
             <form onSubmit={handleSubmit} className="form-inline" >
@@ -64,6 +68,12 @@ function apiGet(params) {
           </div>  
         </div>
         <WeatherNow data={weatherData}/>
+        <h2>Weather Forecast </h2>
+        <div className="row">
+          <div className="col-2">
+            <WeatherForecast latitude={weatherData.latitude} longitude={weatherData.longitude}/>
+          </div>
+        </div>
       </div>
     );
   } else {
