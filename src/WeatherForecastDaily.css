@@ -1,0 +1,9 @@
+.WeatherForecastDaily {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  color: red;
+}
+
+.maximum {
+  font-weight: bold;
+}

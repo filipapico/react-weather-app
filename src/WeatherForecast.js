@@ -10,19 +10,20 @@ export default function WeatherForecast(props) {
 
   function displayWeatherForecast(response) {
     setForecast({
-      date: response.data.daily[0].dt*1000,
-      icon: `http://openweathermap.org/img/wn/${response.data.daily[0].weather[0].icon}@2x.png`,
-      minimumTemperature: response.data.daily[0].temp.min,
-      maximumTemperature: response.data.daily[0].temp.max,
+      daily: response.data.daily,
       latitude: response.data.lat,
     })
+    console.log(response);
     setLoaded(true);
   }
 
   if (loaded && forecast.latitude === props.latitude) {  
     return (
-      <div className="WeatherForecast">
-        <WeatherForecastDaily data={forecast}/>
+      <div className="WeatherForecast row">
+        <WeatherForecastDaily fdata={forecast.daily[1]}/>
+        <WeatherForecastDaily fdata={forecast.daily[2]}/>
+        <WeatherForecastDaily fdata={forecast.daily[3]}/>
+        <WeatherForecastDaily fdata={forecast.daily[4]}/>
       </div>
     )
   } else {

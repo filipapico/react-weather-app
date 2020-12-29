@@ -45,8 +45,7 @@ export default function UpdatedForecastDate(props) {
   return (
   <div>
     <ul>
-      <li>{dayOfWeek}, {hours}:{minutes}</li>
-      <li>{dayOfMonth}, {month}</li>
+      <li>{dayOfWeek}</li>
     </ul>
   </div>)
 }
