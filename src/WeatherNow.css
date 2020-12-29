@@ -1,0 +1,32 @@
+.WeatherNow ul {
+  padding: 0 0 0 15px;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: left;
+  color: #ac4b1c;
+}
+
+.WeatherNow li {
+  list-style: none;
+}
+
+.WeatherNow li strong {
+  font-size: 18px;
+}
+
+.WeatherNow img {
+  position: relative;
+  bottom: 20px;
+  margin-right: 10px;
+}
+
+.WeatherNow .temperature {
+  color: #48484a;
+  font-size: 60px;
+}
+
+.WeatherNow .unit {
+  font-size: 16px;
+  position: relative;
+  bottom: 32px;
+}

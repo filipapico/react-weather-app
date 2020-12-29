@@ -1,9 +1,22 @@
 .WeatherForecastDaily {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 10px;
-  color: red;
+  color: #48484a;
 }
 
-.maximum {
-  font-weight: bold;
+.WeatherForecastDaily ul {
+  list-style: none;
+  text-align: center;
+  padding-left: 0px;
+}
+
+.WeatherForecastDaily img {
+  position: relative;
+  top: 0px;
+  margin: 0 auto;
+  margin-right: 10px;
+}
+
+span.temperature {
+  text-align: center;
+  color: grey;
 }

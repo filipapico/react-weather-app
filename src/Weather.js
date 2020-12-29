@@ -68,10 +68,8 @@ export default function Weather(props) {
           </div>  
         </div>
         <WeatherNow data={weatherData}/>
-        <h2>Weather Forecast </h2>
-        <div className="weather-forecast">
-            <WeatherForecast latitude={weatherData.latitude} longitude={weatherData.longitude}/>
-        </div>
+        <h2>Weather Forecast</h2>
+        <WeatherForecast latitude={weatherData.latitude} longitude={weatherData.longitude}/>
       </div>
     );
   } else {
