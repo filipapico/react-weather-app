@@ -25,23 +25,6 @@ export default function UpdatedForecastDate(props) {
     }
   }
 
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let dayOfMonth = date.getDate();
-  let month = months[date.getMonth()];
-
   return (
   <div>
     <ul>

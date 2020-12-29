@@ -13,7 +13,7 @@ export default function App() {
           <small>Coded by
             {""} <a href="https://www.linkedin.com/in/filipapico/" target="_blank" rel="noreferrer">Filipa Pico</a>, 
             {""} <a href="https://github.com/filipapico/react-weather-app" target="_blank" rel="noreferrer">open-sourced on GitHub</a> and
-            {""} <a href="https://wonderful-edison-2f8028.netlify.app/" target="_blank" rel="noreferrer">hosted on Netlify</a>
+            {""} <a href="https://filipa-pico-react-weather-app.netlify.app/" target="_blank" rel="noreferrer">hosted on Netlify</a>
           </small>
         </footer>
       </div>
